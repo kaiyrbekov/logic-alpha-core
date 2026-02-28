@@ -6,8 +6,8 @@ const channels = [
   {
     id: "TG",
     label: "TELEGRAM",
-    handle: "@equity_trading",
-    url: "https://t.me/equity_trading",
+    handle: "@dustFxx",
+    url: "https://t.me/dustFxx",
     description: "Канал с аналитикой и обновлениями системы.",
   },
   {
