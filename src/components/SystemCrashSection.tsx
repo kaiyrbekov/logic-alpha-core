@@ -1,64 +1,45 @@
+import SectionHeader from "./SectionHeader";
+import { useScrollReveal3D } from "@/hooks/useScrollReveal3D";
+
 const painPoints = [
-  {
-    code: "ERR_001",
-    title: "ГРИНД ВРУЧНУЮ",
-    description:
-      "Ты тратишь по 5–8 часов в день на ручной сбор статистики, перебирая графики годами, но всё равно сомневаешься в цифрах.",
-  },
-  {
-    code: "ERR_002",
-    title: "ИЛЛЮЗИЯ СИСТЕМЫ",
-    description:
-      "У тебя есть набор инструментов, но нет четкого алгоритма. Ты входишь в сделку по интуиции, а потом ищешь логику в стоп-лоссе.",
-  },
-  {
-    code: "ERR_003",
-    title: "ЭМОЦИОНАЛЬНЫЙ ИЗНОС",
-    description:
-      'Ты устал от рыночного хаоса и «качелей» — один случайный профит, а затем серия сливов.',
-  },
-  {
-    code: "ERR_004",
-    title: "ТУПИК В КАПИТАЛЕ",
-    description:
-      "Ты ограничен собственным депозитом и боишься масштабироваться. Мы даем технологию и дорожную карту для получения в управление от $10,000 до $200,000 в Prop-индустрии.",
-  },
+  { code: "ERR_001", title: "ГРИНД ВРУЧНУЮ", description: "Ты тратишь по 5–8 часов в день на ручной сбор статистики, перебирая графики годами, но всё равно сомневаешься в цифрах." },
+  { code: "ERR_002", title: "ИЛЛЮЗИЯ СИСТЕМЫ", description: "У тебя есть набор инструментов, но нет четкого алгоритма. Ты входишь в сделку по интуиции, а потом ищешь логику в стоп-лоссе." },
+  { code: "ERR_003", title: "ЭМОЦИОНАЛЬНЫЙ ИЗНОС", description: 'Ты устал от рыночного хаоса и «качелей» — один случайный профит, а затем серия сливов.' },
+  { code: "ERR_004", title: "ТУПИК В КАПИТАЛЕ", description: "Ты ограничен собственным депозитом и боишься масштабироваться. Мы даем технологию и дорожную карту для получения в управление от $10,000 до $200,000 в Prop-индустрии." },
 ];
 
-import SectionHeader from "./SectionHeader";
+const CrashCard = ({ point, index }: { point: typeof painPoints[0]; index: number }) => {
+  const { ref, style } = useScrollReveal3D(index * 80);
+
+  return (
+    <div
+      ref={ref}
+      style={style}
+      className="glass rounded-sm p-6 border-l-2 border-l-destructive/40 transition-all duration-300 hover:border-l-destructive/80 group card-hover-glow"
+    >
+      <div className="flex items-start gap-4">
+        <div className="shrink-0 font-mono text-[10px] tracking-wider text-destructive/60 mt-1">
+          [{point.code}]
+        </div>
+        <div>
+          <h3 className="font-mono text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 group-hover:bg-destructive transition-colors" />
+            {point.title}
+          </h3>
+          <p className="font-body text-sm leading-relaxed text-muted-foreground">{point.description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const SystemCrashSection = () => {
   return (
     <section className="relative py-32 px-6">
-      <SectionHeader
-        tag="SYSTEM_CRASH"
-        title="ДЛЯ КОГО ЭТОТ ПРОЕКТ"
-        tagClassName="text-destructive/80"
-        dividerClassName="bg-destructive/30"
-      />
-
+      <SectionHeader tag="SYSTEM_CRASH" title="ДЛЯ КОГО ЭТОТ ПРОЕКТ" tagClassName="text-destructive/80" dividerClassName="bg-destructive/30" />
       <div className="max-w-3xl mx-auto grid gap-4">
         {painPoints.map((point, i) => (
-          <div
-            key={point.code}
-            className="glass rounded-sm p-6 border-l-2 border-l-destructive/40 transition-all duration-300 hover:border-l-destructive/80 group"
-            style={{ animationDelay: `${i * 100}ms` }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="shrink-0 font-mono text-[10px] tracking-wider text-destructive/60 mt-1">
-                [{point.code}]
-              </div>
-              <div>
-                <h3 className="font-mono text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 group-hover:bg-destructive transition-colors" />
-                  {point.title}
-                </h3>
-                <p className="font-body text-sm leading-relaxed text-muted-foreground">
-                  {point.description}
-                </p>
-              </div>
-            </div>
-          </div>
+          <CrashCard key={point.code} point={point} index={i} />
         ))}
       </div>
     </section>

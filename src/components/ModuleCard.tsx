@@ -1,16 +1,23 @@
+import { useScrollReveal3D } from "@/hooks/useScrollReveal3D";
+import { useGlitchFlicker } from "@/hooks/useGlitchFlicker";
+
 interface ModuleCardProps {
   num: string;
   title: string;
   description: string;
   highlighted?: boolean;
   isActive?: boolean;
+  index?: number;
 }
 
-const ModuleCard = ({ num, title, description, highlighted, isActive }: ModuleCardProps) => {
-  const ghostDelay = `${(parseInt(num) * 1.3 + 0.2) % 5}s`;
+const ModuleCard = ({ num, title, description, highlighted, isActive, index = 0 }: ModuleCardProps) => {
+  const { ref, style } = useScrollReveal3D(index * 60);
+  const { display: flickerNum, trigger } = useGlitchFlicker(num);
 
   return (
     <div
+      ref={ref}
+      style={style}
       className={`relative pl-16 md:pl-20 transition-all duration-500 ${
         isActive ? "opacity-100 translate-y-0" : "opacity-40 translate-y-2"
       }`}
@@ -32,15 +39,18 @@ const ModuleCard = ({ num, title, description, highlighted, isActive }: ModuleCa
       />
 
       <div
-        className={`glass rounded-sm p-6 transition-all duration-300 ${
+        className={`glass rounded-sm p-6 transition-all duration-300 card-hover-glow ${
           highlighted ? "module-highlighted-strong" : ""
         }`}
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs cyan-text tracking-wider">
-              {num}
+            <span
+              className="font-mono text-xs cyan-text tracking-wider cursor-default select-none"
+              onMouseEnter={trigger}
+            >
+              {flickerNum}
             </span>
             <span className="font-mono text-xs text-muted-foreground">/</span>
             <h3 className="font-mono text-sm md:text-base font-medium text-foreground">{title}</h3>
