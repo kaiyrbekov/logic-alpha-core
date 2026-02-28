@@ -37,7 +37,7 @@ const SystemCrashSection = () => {
   return (
     <section className="relative py-40 px-6">
       <SectionHeader tag="SYSTEM_CRASH" title="ДЛЯ КОГО ЭТОТ ПРОЕКТ" tagClassName="text-destructive/80" dividerClassName="bg-destructive/30" />
-      <div className="max-w-4xl mx-auto grid gap-5">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-5">
         {painPoints.map((point, i) => (
           <CrashCard key={point.code} point={point} index={i} />
         ))}

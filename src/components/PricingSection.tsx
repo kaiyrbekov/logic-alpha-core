@@ -1,5 +1,6 @@
 import SectionHeader from "./SectionHeader";
 import { useScrollReveal3D } from "@/hooks/useScrollReveal3D";
+import { useCardTilt } from "@/hooks/useCardTilt";
 
 interface PricingSectionProps {
   onOpenForm: (tier: string) => void;
@@ -24,11 +25,18 @@ const tiers = [
 ];
 
 const PricingCard = ({ tier, index, onOpenForm }: { tier: typeof tiers[0]; index: number; onOpenForm: (t: string) => void }) => {
-  const { ref, style } = useScrollReveal3D(index * 120);
+  const { ref: revealRef, style: revealStyle } = useScrollReveal3D(index * 120);
+  const tilt = useCardTilt();
 
   return (
-    <div ref={ref} style={style}>
-      <div className={`glass rounded-sm p-9 flex flex-col transition-all duration-300 card-hover-glow hover:border-primary/20 h-full ${tier.accent ? "module-highlighted" : ""}`}>
+    <div ref={revealRef} style={revealStyle}>
+      <div
+        ref={tilt.ref}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={tilt.onMouseLeave}
+        className={`glass rounded-sm p-9 flex flex-col transition-all duration-300 h-full ${tier.accent ? "module-highlighted" : ""}`}
+        style={{ transformStyle: "preserve-3d" }}
+      >
         <div className="mb-7">
           <div className="flex items-center gap-2 mb-5">
             {tier.accent && <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-cyan" />}

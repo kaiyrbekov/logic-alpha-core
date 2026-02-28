@@ -6,6 +6,10 @@ import PhaseIntegration from "@/components/PhaseIntegration";
 import PricingSection from "@/components/PricingSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
 import ImmersiveBackground from "@/components/ImmersiveBackground";
+import QuoteAnchor from "@/components/QuoteAnchor";
+import SkillsLog from "@/components/SkillsLog";
+import SystemFAQ from "@/components/SystemFAQ";
+import DirectAccess from "@/components/DirectAccess";
 
 const Index = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -20,11 +24,24 @@ const Index = () => {
     <div className="relative min-h-screen bg-background film-grain">
       <ImmersiveBackground />
       <Hero onOpenForm={handleOpenForm} />
+
       <SystemCrashSection />
+
+      <QuoteAnchor text="SYSTEM OVER EMOTION." />
+
+      <SkillsLog />
+
+      <QuoteAnchor text="DATA IS THE EDGE." />
+
       <ModuleRoadmap />
       <PhaseIntegration />
-      
+
+      <QuoteAnchor text="NAS100 MASTERED." />
+
       <PricingSection onOpenForm={handleOpenForm} />
+
+      <SystemFAQ />
+      <DirectAccess />
 
       {/* Footer */}
       <footer className="border-t border-border py-12 px-6">
