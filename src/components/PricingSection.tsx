@@ -69,8 +69,8 @@ const PricingSection = ({ onOpenForm }: PricingSectionProps) => {
                 <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground">{tier.label}</span>
               </div>
               <div
-                className="font-mono text-3xl font-bold cyan-text ghost-number"
-                style={{ "--ghost-delay": `${tiers.indexOf(tier) * 1.5 + 0.3}s` } as React.CSSProperties}
+                className="font-mono text-3xl font-bold cyan-text glitch-number"
+                style={{ "--glitch-delay": `${tiers.indexOf(tier) * 1.5 + 0.3}s` } as React.CSSProperties}
               >
                 {tier.price}
               </div>
