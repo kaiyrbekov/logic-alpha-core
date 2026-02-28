@@ -43,12 +43,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
         {/* Status indicator */}
-        <div className="flex items-center justify-center gap-2 mb-14">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-cyan" />
-          <span className="font-mono text-sm tracking-[0.3em] text-muted-foreground uppercase">
-            System Active / v2.0
-          </span>
-        </div>
+        <div className="mb-14" />
 
         {/* Main headline */}
         <h1
