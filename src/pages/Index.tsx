@@ -2,7 +2,7 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
-import UpgradeResultSection from "@/components/UpgradeResultSection";
+
 import PricingSection from "@/components/PricingSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
 
@@ -20,7 +20,7 @@ const Index = () => {
       <Hero onOpenForm={handleOpenForm} />
       <SystemCrashSection />
       <ModuleRoadmap />
-      <UpgradeResultSection />
+      
       <PricingSection onOpenForm={handleOpenForm} />
 
       {/* Footer */}

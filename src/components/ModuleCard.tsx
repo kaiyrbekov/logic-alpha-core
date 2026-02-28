@@ -39,10 +39,7 @@ const ModuleCard = ({ num, title, description, highlighted, isActive }: ModuleCa
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-center gap-3">
-            <span
-              className="font-mono text-xs cyan-text tracking-wider glitch-number"
-              style={{ "--glitch-delay": ghostDelay } as React.CSSProperties}
-            >
+            <span className="font-mono text-xs cyan-text tracking-wider">
               {num}
             </span>
             <span className="font-mono text-xs text-muted-foreground">/</span>
