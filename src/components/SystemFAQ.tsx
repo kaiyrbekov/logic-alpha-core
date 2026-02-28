@@ -82,7 +82,7 @@ const SystemFAQ = () => {
         {/* Contact Footer */}
         <div className="mt-24 text-center">
           <h3 className="font-sans text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-8">
-            ОСТАЛИСЬ ВОПРОСЫ? СВЯЖИТЕСЬ СО МНОЙ НАПРЯМУЮ.
+            ОСТАЛИСЬ ВОПРОСЫ? СВЯЖИТЕСЬ С НАМИ НАПРЯМУЮ.
           </h3>
           <a
             href="https://t.me/dustFxx"
