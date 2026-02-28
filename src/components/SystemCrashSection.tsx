@@ -25,22 +25,17 @@ const painPoints = [
   },
 ];
 
+import SectionHeader from "./SectionHeader";
+
 const SystemCrashSection = () => {
   return (
     <section className="relative py-32 px-6">
-      {/* Header */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="h-px flex-1 bg-destructive/30" />
-          <span className="font-mono text-xs tracking-[0.3em] text-destructive/80">
-            SYSTEM_CRASH
-          </span>
-          <div className="h-px flex-1 bg-destructive/30" />
-        </div>
-        <h2 className="font-mono text-2xl md:text-3xl font-bold text-center tracking-tight text-foreground mt-6">
-          ДЛЯ КОГО ЭТОТ ПРОЕКТ
-        </h2>
-      </div>
+      <SectionHeader
+        tag="SYSTEM_CRASH"
+        title="ДЛЯ КОГО ЭТОТ ПРОЕКТ"
+        tagClassName="text-destructive/80"
+        dividerClassName="bg-destructive/30"
+      />
 
       <div className="max-w-3xl mx-auto grid gap-4">
         {painPoints.map((point, i) => (
@@ -50,11 +45,9 @@ const SystemCrashSection = () => {
             style={{ animationDelay: `${i * 100}ms` }}
           >
             <div className="flex items-start gap-4">
-              {/* Error code */}
               <div className="shrink-0 font-mono text-[10px] tracking-wider text-destructive/60 mt-1">
                 [{point.code}]
               </div>
-
               <div>
                 <h3 className="font-mono text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 group-hover:bg-destructive transition-colors" />

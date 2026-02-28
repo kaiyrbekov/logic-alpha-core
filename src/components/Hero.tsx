@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
+import { useMagneticButton } from "@/hooks/useMagneticButton";
 
 interface HeroProps {
   onOpenForm: (tier?: string) => void;
@@ -32,6 +33,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 const Hero = ({ onOpenForm }: HeroProps) => {
   const { d, h, m } = useCountdown();
+  const magnetic = useMagneticButton(0.3);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6">
@@ -68,8 +70,12 @@ const Hero = ({ onOpenForm }: HeroProps) => {
 
         {/* CTA */}
         <button
+          ref={magnetic.ref}
+          onMouseMove={magnetic.onMouseMove}
+          onMouseLeave={magnetic.onMouseLeave}
           onClick={() => onOpenForm()}
           className="group relative font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border bg-transparent text-foreground transition-all duration-300 cta-glow hover:border-primary/40 hover:text-primary"
+          style={{ transition: "transform 0.2s ease-out, border-color 0.3s, color 0.3s, box-shadow 0.3s" }}
         >
           <span className="relative z-10">[ ПОДАТЬ ЗАЯВКУ ]</span>
         </button>

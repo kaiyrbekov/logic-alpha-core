@@ -1,3 +1,5 @@
+import SectionHeader from "./SectionHeader";
+
 interface PricingSectionProps {
   onOpenForm: (tier: string) => void;
 }
@@ -46,13 +48,7 @@ const PricingSection = ({ onOpenForm }: PricingSectionProps) => {
   return (
     <section className="relative py-32 px-6">
       {/* Header */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="h-px flex-1 bg-border" />
-          <span className="font-mono text-xs tracking-[0.3em] text-muted-foreground">УРОВНИ ДОСТУПА</span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
-      </div>
+      <SectionHeader tag="УРОВНИ ДОСТУПА" title="ВЫБЕРИТЕ ТАРИФ" />
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-4">
         {tiers.map((tier) => (
