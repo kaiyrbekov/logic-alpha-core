@@ -15,18 +15,18 @@ const CrashCard = ({ point, index }: { point: typeof painPoints[0]; index: numbe
     <div
       ref={ref}
       style={style}
-      className="glass rounded-sm p-6 border-l-2 border-l-destructive/40 transition-all duration-300 hover:border-l-destructive/80 group card-hover-glow"
+      className="glass rounded-sm p-7 border-l-2 border-l-destructive/40 transition-all duration-300 hover:border-l-destructive/80 group card-hover-glow"
     >
       <div className="flex items-start gap-4">
-        <div className="shrink-0 font-mono text-[10px] tracking-wider text-destructive/60 mt-1">
+        <div className="shrink-0 font-mono text-xs tracking-wider text-destructive/60 mt-1">
           [{point.code}]
         </div>
         <div>
-          <h3 className="font-mono text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+          <h3 className="font-sans text-base font-semibold text-foreground mb-3 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 group-hover:bg-destructive transition-colors" />
             {point.title}
           </h3>
-          <p className="font-body text-sm leading-relaxed text-muted-foreground">{point.description}</p>
+          <p className="font-body text-base leading-relaxed text-muted-foreground">{point.description}</p>
         </div>
       </div>
     </div>
@@ -35,9 +35,9 @@ const CrashCard = ({ point, index }: { point: typeof painPoints[0]; index: numbe
 
 const SystemCrashSection = () => {
   return (
-    <section className="relative py-32 px-6">
+    <section className="relative py-40 px-6">
       <SectionHeader tag="SYSTEM_CRASH" title="ДЛЯ КОГО ЭТОТ ПРОЕКТ" tagClassName="text-destructive/80" dividerClassName="bg-destructive/30" />
-      <div className="max-w-3xl mx-auto grid gap-4">
+      <div className="max-w-4xl mx-auto grid gap-5">
         {painPoints.map((point, i) => (
           <CrashCard key={point.code} point={point} index={i} />
         ))}
