@@ -380,6 +380,22 @@
     }
   }
 
+  /* Stage 05 guarantee glow */
+  .stage-guarantee-glow {
+    border-color: hsl(183 100% 50% / 0.4) !important;
+    box-shadow: 0 0 30px hsl(183 100% 50% / 0.12), 0 0 60px hsl(183 100% 50% / 0.06), inset 0 0 30px hsl(183 100% 50% / 0.03);
+    animation: guarantee-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes guarantee-breathe {
+    0%, 100% {
+      box-shadow: 0 0 30px hsl(183 100% 50% / 0.12), inset 0 0 30px hsl(183 100% 50% / 0.03);
+    }
+    50% {
+      box-shadow: 0 0 50px hsl(183 100% 50% / 0.2), 0 0 80px hsl(183 100% 50% / 0.08), inset 0 0 50px hsl(183 100% 50% / 0.05);
+    }
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 4px;

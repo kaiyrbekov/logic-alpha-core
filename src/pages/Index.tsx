@@ -2,6 +2,7 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
+import PhaseIntegration from "@/components/PhaseIntegration";
 import PricingSection from "@/components/PricingSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
 import { useParallaxGrid } from "@/hooks/useParallaxGrid";
@@ -21,6 +22,7 @@ const Index = () => {
       <Hero onOpenForm={handleOpenForm} />
       <SystemCrashSection />
       <ModuleRoadmap />
+      <PhaseIntegration />
       
       <PricingSection onOpenForm={handleOpenForm} />
 
