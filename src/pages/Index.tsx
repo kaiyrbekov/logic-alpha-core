@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
+import UpgradeResultSection from "@/components/UpgradeResultSection";
 import PricingSection from "@/components/PricingSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
 
@@ -16,7 +18,9 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-background bg-grid film-grain">
       <Hero onOpenForm={handleOpenForm} />
+      <SystemCrashSection />
       <ModuleRoadmap />
+      <UpgradeResultSection />
       <PricingSection onOpenForm={handleOpenForm} />
 
       {/* Footer */}

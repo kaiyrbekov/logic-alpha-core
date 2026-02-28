@@ -1,11 +1,38 @@
-import { useState } from "react";
-import IntakeFormModal from "@/components/IntakeFormModal";
+import { useState, useEffect } from "react";
 
 interface HeroProps {
   onOpenForm: (tier?: string) => void;
 }
 
+const TARGET_DATE = new Date("2026-03-10T00:00:00");
+
+const useCountdown = () => {
+  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const diff = Math.max(0, TARGET_DATE.getTime() - now.getTime());
+      setTimeLeft({
+        d: Math.floor(diff / 86400000),
+        h: Math.floor((diff % 86400000) / 3600000),
+        m: Math.floor((diff % 3600000) / 60000),
+        s: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return timeLeft;
+};
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
 const Hero = ({ onOpenForm }: HeroProps) => {
+  const { d, h, m, s } = useCountdown();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6">
       {/* Decorative lines */}
@@ -35,7 +62,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
         </h1>
 
         {/* Subheadline */}
-        <p className="font-mono text-sm md:text-base tracking-[0.4em] text-muted-foreground mt-8 mb-16">
+        <p className="font-mono text-sm md:text-base tracking-[0.4em] text-muted-foreground mt-8 mb-10">
           SYSTEM OVER INTUITION<span className="cyan-text">.</span>
         </p>
 
@@ -47,15 +74,40 @@ const Hero = ({ onOpenForm }: HeroProps) => {
           <span className="relative z-10">[ ПОДАТЬ ЗАЯВКУ ]</span>
         </button>
 
+        {/* Timer */}
+        <div className="mt-8 font-mono text-[11px] tracking-wider text-muted-foreground/60">
+          <span className="text-muted-foreground/40">STATUS:</span>{" "}
+          <span className="text-primary/70">ENROLLMENT_OPEN</span>{" "}
+          <span className="text-muted-foreground/30">//</span>{" "}
+          <span className="text-muted-foreground/40">START_DATE:</span>{" "}
+          <span className="text-foreground/60">10_MARCH</span>{" "}
+          <span className="text-muted-foreground/30">//</span>{" "}
+          <span className="text-muted-foreground/40">TIME_LEFT:</span>{" "}
+          <span className="cyan-text">
+            <span className="ghost-number" style={{ "--ghost-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>
+            :
+            <span className="ghost-number" style={{ "--ghost-delay": "1.1s" } as React.CSSProperties}>{pad(h)}</span>
+            :
+            <span className="ghost-number" style={{ "--ghost-delay": "2.4s" } as React.CSSProperties}>{pad(m)}</span>
+            :
+            <span className="ghost-number" style={{ "--ghost-delay": "0.7s" } as React.CSSProperties}>{pad(s)}</span>
+          </span>
+        </div>
+
         {/* Bottom stats */}
-        <div className="mt-24 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
             { num: "13", label: "МОДУЛЕЙ" },
             { num: "AI", label: "BACKTEST" },
             { num: "24/7", label: "МЕНТОРИНГ" },
-          ].map((stat) => (
+          ].map((stat, i) => (
             <div key={stat.label} className="text-center">
-              <div className="font-mono text-2xl font-bold cyan-text mb-1">{stat.num}</div>
+              <div
+                className="font-mono text-2xl font-bold cyan-text mb-1 ghost-number"
+                style={{ "--ghost-delay": `${i * 1.7 + 0.5}s` } as React.CSSProperties}
+              >
+                {stat.num}
+              </div>
               <div className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">{stat.label}</div>
             </div>
           ))}

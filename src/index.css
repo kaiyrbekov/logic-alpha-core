@@ -236,6 +236,51 @@
     box-shadow: 0 0 30px hsl(183 100% 50% / 0.1), inset 0 0 30px hsl(183 100% 50% / 0.02);
   }
 
+  /* Ghosting effect for numbers */
+  .ghost-number {
+    animation: ghosting 4s ease-in-out infinite;
+    animation-delay: var(--ghost-delay, 0s);
+  }
+
+  @keyframes ghosting {
+    0%, 100% { opacity: 1; }
+    40% { opacity: 1; }
+    50% { opacity: 0.15; }
+    60% { opacity: 1; }
+    85% { opacity: 1; }
+    90% { opacity: 0.3; }
+    95% { opacity: 1; }
+  }
+
+  /* Stronger pulse for module 09 */
+  .pulse-cyan-strong {
+    animation: pulse-cyan-strong 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-cyan-strong {
+    0%, 100% {
+      box-shadow: 0 0 8px hsl(183 100% 50% / 0.4), 0 0 24px hsl(183 100% 50% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(183 100% 50% / 0.8), 0 0 60px hsl(183 100% 50% / 0.4);
+    }
+  }
+
+  .module-highlighted-strong {
+    border-color: hsl(183 100% 50% / 0.5) !important;
+    box-shadow: 0 0 40px hsl(183 100% 50% / 0.15), 0 0 80px hsl(183 100% 50% / 0.05), inset 0 0 40px hsl(183 100% 50% / 0.03);
+    animation: module-breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes module-breathe {
+    0%, 100% {
+      box-shadow: 0 0 40px hsl(183 100% 50% / 0.15), inset 0 0 40px hsl(183 100% 50% / 0.03);
+    }
+    50% {
+      box-shadow: 0 0 60px hsl(183 100% 50% / 0.25), 0 0 100px hsl(183 100% 50% / 0.1), inset 0 0 60px hsl(183 100% 50% / 0.05);
+    }
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
