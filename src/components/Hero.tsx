@@ -52,7 +52,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
 
         {/* Main headline */}
         <h1
-          className="glitch-hover text-6xl md:text-8xl lg:text-9xl font-sans font-black tracking-tighter leading-[0.9] mb-8"
+          className="glitch-hover text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tighter leading-[0.9] mb-8"
           data-text="EQUITY / СИСТЕМНЫЙ ТРЕЙДИНГ"
         >
           <span className="text-foreground">EQUITY</span>
@@ -82,8 +82,8 @@ const Hero = ({ onOpenForm }: HeroProps) => {
 
         {/* Timer */}
         <div className="mt-12">
-          <div className="font-mono text-xs tracking-[0.2em] text-muted-foreground/50 mb-4">
-            СТАРТ МАРТОВСКОГО ПОТОКА ЧЕРЕЗ
+          <div className="font-sans text-base md:text-lg tracking-[0.15em] font-extrabold text-foreground mb-4">
+            СТАРТ МАРТОВСКОГО ПОТОКА <span className="cyan-text">ЧЕРЕЗ</span>
           </div>
           <div className="font-mono text-3xl md:text-5xl font-bold tracking-wider cyan-glow-text flex items-center justify-center gap-1 md:gap-2">
             <span className="glitch-number" style={{ "--glitch-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>

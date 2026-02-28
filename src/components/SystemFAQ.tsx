@@ -76,12 +76,12 @@ const SystemFAQ = () => {
           </h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://t.me/equity_trading"
+              href="https://t.me/dustFxx"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border hover:border-primary hover:text-primary transition-all duration-300 cta-glow"
+              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-primary text-primary hover:bg-primary/10 transition-all duration-300 cta-glow"
             >
-              [ TELEGRAM ]
+              [ НАПИСАТЬ В TELEGRAM ]
             </a>
             <a
               href="https://wa.me/7XXXXXXXXXX"
