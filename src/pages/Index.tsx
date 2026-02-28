@@ -9,7 +9,7 @@ import ImmersiveBackground from "@/components/ImmersiveBackground";
 
 import SkillsLog from "@/components/SkillsLog";
 import SystemFAQ from "@/components/SystemFAQ";
-import DirectAccess from "@/components/DirectAccess";
+
 
 const Index = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -35,7 +35,7 @@ const Index = () => {
       <PricingSection onOpenForm={handleOpenForm} />
 
       <SystemFAQ />
-      <DirectAccess />
+      
 
       {/* Footer */}
       <footer className="border-t border-border py-12 px-6">

@@ -74,24 +74,14 @@ const SystemFAQ = () => {
           <h3 className="font-sans text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-8">
             ОСТАЛИСЬ ВОПРОСЫ? СВЯЖИТЕСЬ СО МНОЙ НАПРЯМУЮ.
           </h3>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://t.me/dustFxx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-primary text-primary hover:bg-primary/10 transition-all duration-300 cta-glow"
-            >
-              [ НАПИСАТЬ В TELEGRAM ]
-            </a>
-            <a
-              href="https://wa.me/7XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border hover:border-primary hover:text-primary transition-all duration-300 cta-glow"
-            >
-              [ WHATSAPP ]
-            </a>
-          </div>
+          <a
+            href="https://t.me/dustFxx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-mono text-sm tracking-[0.2em] px-10 py-4 border border-primary text-primary hover:bg-primary/10 transition-all duration-300 cta-glow"
+          >
+            [ НАПИСАТЬ В TELEGRAM ]
+          </a>
         </div>
       </div>
     </section>
