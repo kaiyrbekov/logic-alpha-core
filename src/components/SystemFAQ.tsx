@@ -9,28 +9,36 @@ import {
 
 const faqs = [
   {
-    q: "Какой компьютер нужен для обучения?",
-    a: "Любой современный ПК или ноутбук с доступом в интернет. Для работы с терминалом рекомендуется два монитора, но это не обязательно на старте.",
-  },
-  {
-    q: "Сколько времени нужно уделять в день?",
-    a: "Минимум 2-3 часа в день на изучение материала и практику. Торговые сессии London и New York занимают 3-4 часа. Программа рассчитана на совмещение с основной работой.",
-  },
-  {
-    q: "Подойдет ли новичку без опыта?",
-    a: "Да. Программа построена с нуля — от базовой терминологии до продвинутых стратегий. AI-Backtest позволяет верифицировать навыки объективно, без субъективных оценок.",
-  },
-  {
-    q: "Что такое Prop-фондирование?",
-    a: "Prop-компании предоставляют капитал от $10,000 до $200,000 в управление трейдерам, прошедшим аттестацию. Вы торгуете на их деньгах и получаете до 90% прибыли.",
-  },
-  {
-    q: "Как работает гарантия результата?",
-    a: "Если после прохождения программы ваша стратегия не достигла целевых показателей — активируется протокол индивидуального сопровождения. Личные созвоны с ментором до полной стабилизации торговли.",
+    q: "Как работает AI-бэктестер?",
+    a: "Вы задаете параметры своей стратегии в виде технического промпта (мы обучаем архитектуре промптов с нуля). Система за минуты проводит глубокий аудит и выдает полную статистику валидности вашей модели на исторических данных.",
   },
   {
     q: "Какие рынки покрывает программа?",
-    a: "Фокус на NAS100 (NASDAQ). Методология также применима к Forex, другим индексам и криптовалютам. Ядро системы универсально.",
+    a: "Методология универсальна. Мы обучаем профессиональной работе с ликвидностью на всех ключевых рынках: Индексы (NAS100, SPX500), Forex и Криптовалюты.",
+  },
+  {
+    q: "Почему стоит выбрать именно EQUITY?",
+    a: "Это единственная экосистема, объединившая классический Smart Money с мощностью AI-бэктестинга. Мы предлагаем индивидуальный инженерный подход и техническую гарантию результата.",
+  },
+  {
+    q: "Сколько времени нужно уделять в день?",
+    a: "Для теории достаточно 1.5–2 часа. Торговая активность привязана к конкретным временным окнам (Лондонская и Нью-Йоркская сессии).",
+  },
+  {
+    q: "Когда я смогу заработать первые деньги?",
+    a: "Программа длится 60 дней. Наша цель — ваш выход на аттестацию в Prop-фирму сразу после завершения курса для получения капитала в управление.",
+  },
+  {
+    q: "Как работает гарантия результата?",
+    a: "Если после выполнения всех этапов у вас нет стабильной статистики, активируется протокол индивидуального сопровождения: личные созвоны с ментором до полной стабилизации вашей торговли.",
+  },
+  {
+    q: "Подойдет ли обучение новичку без опыта?",
+    a: "Да. Мы даем фундаментальную базу с нуля, но без рыночного шума. Вы сразу учитесь методам, которыми пользуются институциональные игроки.",
+  },
+  {
+    q: "Что такое проп-фондирование?",
+    a: "Это возможность получить в управление капитал инвестиционных компаний (Prop-firms). После теста вы торгуете на их средства и забираете до 80-90% чистой прибыли.",
   },
 ];
 
@@ -45,20 +53,45 @@ const SystemFAQ = () => {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-b-border/50">
-                <AccordionTrigger className="font-sans text-base md:text-lg font-semibold text-foreground hover:no-underline hover:text-primary px-4 py-5 [&>svg]:text-primary">
+                <AccordionTrigger className="font-sans text-lg md:text-2xl font-extrabold text-foreground hover:no-underline hover:text-primary px-4 py-5 [&>svg]:text-primary glitch-hover">
                   <span className="flex items-center gap-3 text-left">
                     <span className="font-mono text-xs cyan-text tracking-wider shrink-0">[{String(i + 1).padStart(2, "0")}]</span>
                     {faq.q}
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-5">
-                  <p className="font-body text-base leading-relaxed text-muted-foreground pl-10">
+                  <p className="font-mono text-base leading-relaxed text-muted-foreground pl-10">
                     {faq.a}
                   </p>
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        {/* Contact Footer */}
+        <div className="mt-24 text-center">
+          <h3 className="font-sans text-2xl md:text-3xl font-extrabold tracking-tight text-foreground mb-8">
+            ОСТАЛИСЬ ВОПРОСЫ? СВЯЖИТЕСЬ СО МНОЙ НАПРЯМУЮ.
+          </h3>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://t.me/equity_trading"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border hover:border-primary hover:text-primary transition-all duration-300 cta-glow"
+            >
+              [ TELEGRAM ]
+            </a>
+            <a
+              href="https://wa.me/7XXXXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border hover:border-primary hover:text-primary transition-all duration-300 cta-glow"
+            >
+              [ WHATSAPP ]
+            </a>
+          </div>
         </div>
       </div>
     </section>
