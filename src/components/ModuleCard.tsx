@@ -1,5 +1,6 @@
 import { useScrollReveal3D } from "@/hooks/useScrollReveal3D";
 import { useGlitchFlicker } from "@/hooks/useGlitchFlicker";
+import { useCardTilt } from "@/hooks/useCardTilt";
 
 interface ModuleCardProps {
   num: string;
@@ -13,6 +14,7 @@ interface ModuleCardProps {
 const ModuleCard = ({ num, title, description, highlighted, isActive, index = 0 }: ModuleCardProps) => {
   const { ref, style } = useScrollReveal3D(index * 60);
   const { display: flickerNum, trigger } = useGlitchFlicker(num);
+  const tilt = useCardTilt();
 
   return (
     <div
@@ -39,9 +41,13 @@ const ModuleCard = ({ num, title, description, highlighted, isActive, index = 0 
       />
 
       <div
-        className={`glass rounded-sm p-7 transition-all duration-300 card-hover-glow ${
+        ref={tilt.ref}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={tilt.onMouseLeave}
+        className={`glass rounded-sm p-7 transition-all duration-300 ${
           highlighted ? "module-highlighted-strong" : ""
         }`}
+        style={{ transformStyle: "preserve-3d" }}
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-4">
