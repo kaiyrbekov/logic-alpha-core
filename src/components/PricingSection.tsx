@@ -63,7 +63,7 @@ const tiers: TierConfig[] = [
     label: "SELF-STUDY",
     oldPrice: "$299",
     price: "$199",
-    activeCount: 2,
+    activeCount: 4,
     bonus: "+ 30 дней в комьюнити",
     accent: false,
     limited: false,
