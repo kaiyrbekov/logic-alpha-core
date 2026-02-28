@@ -15,7 +15,7 @@ export const useScrollReveal3D = (delay = 0) => {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
     observer.observe(el);
@@ -24,10 +24,11 @@ export const useScrollReveal3D = (delay = 0) => {
 
   const style: React.CSSProperties = {
     transform: visible
-      ? "perspective(800px) rotateX(0deg) translateY(0px)"
-      : "perspective(800px) rotateX(8deg) translateY(30px)",
+      ? "perspective(800px) rotateX(0deg) translateY(0px) scale(1)"
+      : "perspective(800px) rotateX(6deg) translateY(40px) scale(0.97)",
     opacity: visible ? 1 : 0,
-    transition: `all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+    filter: visible ? "blur(0px)" : "blur(6px)",
+    transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
     transformOrigin: "center bottom",
   };
 

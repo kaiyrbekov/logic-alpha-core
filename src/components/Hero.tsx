@@ -41,18 +41,18 @@ const Hero = ({ onOpenForm }: HeroProps) => {
       <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-border to-transparent opacity-30" />
       <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-border to-transparent opacity-30" />
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center max-w-5xl mx-auto">
         {/* Status indicator */}
-        <div className="flex items-center justify-center gap-2 mb-12">
+        <div className="flex items-center justify-center gap-2 mb-14">
           <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-cyan" />
-          <span className="font-mono text-xs tracking-[0.3em] text-muted-foreground uppercase">
+          <span className="font-mono text-sm tracking-[0.3em] text-muted-foreground uppercase">
             System Active / v2.0
           </span>
         </div>
 
-        {/* Main headline with glitch */}
+        {/* Main headline */}
         <h1
-          className="glitch-hover text-5xl md:text-7xl lg:text-8xl font-mono font-bold tracking-tighter leading-[0.9] mb-6"
+          className="glitch-hover text-6xl md:text-8xl lg:text-9xl font-sans font-black tracking-tighter leading-[0.9] mb-8"
           data-text="EQUITY / СИСТЕМНЫЙ ТРЕЙДИНГ"
         >
           <span className="text-foreground">EQUITY</span>
@@ -64,7 +64,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
         </h1>
 
         {/* Subheadline */}
-        <p className="font-mono text-sm md:text-base tracking-[0.4em] text-muted-foreground mt-8 mb-10">
+        <p className="font-mono text-base md:text-lg tracking-[0.4em] text-muted-foreground mt-10 mb-12">
           SYSTEM OVER INTUITION<span className="cyan-text">.</span>
         </p>
 
@@ -74,35 +74,34 @@ const Hero = ({ onOpenForm }: HeroProps) => {
           onMouseMove={magnetic.onMouseMove}
           onMouseLeave={magnetic.onMouseLeave}
           onClick={() => onOpenForm()}
-          className="group relative font-mono text-sm tracking-[0.2em] px-10 py-4 border border-border bg-transparent text-foreground transition-all duration-300 cta-glow hover:border-primary/40 hover:text-primary"
+          className="group relative font-mono text-base tracking-[0.2em] px-12 py-5 border border-border bg-transparent text-foreground transition-all duration-300 cta-glow hover:border-primary/40 hover:text-primary"
           style={{ transition: "transform 0.2s ease-out, border-color 0.3s, color 0.3s, box-shadow 0.3s" }}
         >
           <span className="relative z-10">[ ПОДАТЬ ЗАЯВКУ ]</span>
         </button>
 
-        {/* Timer — prominent */}
-        <div className="mt-10">
-          <div className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground/50 mb-3">
+        {/* Timer */}
+        <div className="mt-12">
+          <div className="font-mono text-xs tracking-[0.2em] text-muted-foreground/50 mb-4">
             СТАРТ МАРТОВСКОГО ПОТОКА ЧЕРЕЗ
           </div>
-          <div className="font-mono text-2xl md:text-4xl font-bold tracking-wider cyan-glow-text flex items-center justify-center gap-1 md:gap-2">
+          <div className="font-mono text-3xl md:text-5xl font-bold tracking-wider cyan-glow-text flex items-center justify-center gap-1 md:gap-2">
             <span className="glitch-number" style={{ "--glitch-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>
-            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">ДНЕЙ</span>
+            <span className="text-muted-foreground/40 text-xl md:text-3xl font-normal">ДНЕЙ</span>
             <span className="text-primary/30 mx-1">:</span>
             <span className="glitch-number" style={{ "--glitch-delay": "1.1s" } as React.CSSProperties}>{pad(h)}</span>
-            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">ЧАСОВ</span>
+            <span className="text-muted-foreground/40 text-xl md:text-3xl font-normal">ЧАСОВ</span>
             <span className="text-primary/30 mx-1">:</span>
             <span className="glitch-number" style={{ "--glitch-delay": "2.4s" } as React.CSSProperties}>{pad(m)}</span>
-            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">МИНУТ</span>
+            <span className="text-muted-foreground/40 text-xl md:text-3xl font-normal">МИНУТ</span>
           </div>
-          {/* Subtle pulsing progress bar */}
-          <div className="max-w-xs mx-auto mt-4">
+          <div className="max-w-xs mx-auto mt-5">
             <Progress value={100} className="h-[2px] bg-muted/30 pulse-progress" />
           </div>
         </div>
 
         {/* Bottom stats */}
-        <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div className="mt-20 grid grid-cols-3 gap-10 max-w-lg mx-auto">
           {[
             { num: "13", label: "МОДУЛЕЙ" },
             { num: "AI", label: "BACKTEST" },
@@ -110,12 +109,12 @@ const Hero = ({ onOpenForm }: HeroProps) => {
           ].map((stat, i) => (
             <div key={stat.label} className="text-center">
               <div
-                className="font-mono text-2xl font-bold cyan-text mb-1 glitch-number"
+                className="font-mono text-3xl font-bold cyan-text mb-2 glitch-number"
                 style={{ "--glitch-delay": `${i * 1.7 + 0.5}s` } as React.CSSProperties}
               >
                 {stat.num}
               </div>
-              <div className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">{stat.label}</div>
+              <div className="font-mono text-xs tracking-[0.2em] text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -123,7 +122,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="font-mono text-[10px] tracking-[0.3em] text-muted-foreground">SCROLL</span>
+        <span className="font-mono text-xs tracking-[0.3em] text-muted-foreground">SCROLL</span>
         <div className="w-px h-8 bg-gradient-to-b from-muted-foreground to-transparent" />
       </div>
     </section>

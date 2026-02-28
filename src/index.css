@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,8 @@
 @layer base {
   :root {
     --background: 0 0% 2%;
-    --foreground: 0 0% 85%;
+    --foreground: 0 0% 100%;
+    --foreground-secondary: 0 0% 63%;
 
     --card: 0 0% 4%;
     --card-foreground: 0 0% 85%;
@@ -22,7 +23,7 @@
     --secondary-foreground: 0 0% 70%;
 
     --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 63%;
 
     --accent: 183 100% 50%;
     --accent-foreground: 0 0% 2%;
@@ -63,10 +64,13 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Grotesk', sans-serif;
+    color: hsl(var(--foreground));
   }
 }
 

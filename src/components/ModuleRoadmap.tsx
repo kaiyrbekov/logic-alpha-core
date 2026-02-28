@@ -34,7 +34,6 @@ const ModuleRoadmap = () => {
       const progress = Math.max(0, Math.min(1, scrolled / (totalHeight + windowHeight * 0.5)));
       setScrollProgress(progress);
 
-      // Block 09 detection
       if (block09Ref.current) {
         const r09 = block09Ref.current.getBoundingClientRect();
         const inView = r09.top < windowHeight * 0.7 && r09.bottom > windowHeight * 0.3;
@@ -47,8 +46,7 @@ const ModuleRoadmap = () => {
   }, []);
 
   return (
-    <section className="relative py-32 px-6" ref={containerRef}>
-      {/* Block 09 background darkening overlay */}
+    <section className="relative py-40 px-6" ref={containerRef}>
       <div
         className="fixed inset-0 bg-black/40 pointer-events-none z-[1] transition-opacity duration-700"
         style={{ opacity: block09Active ? 1 : 0 }}
@@ -56,25 +54,16 @@ const ModuleRoadmap = () => {
 
       <SectionHeader tag="ПРОГРАММА КУРСА" title="13 МОДУЛЕЙ СИСТЕМЫ" />
 
-      <div className="relative max-w-3xl mx-auto z-[2]">
-        {/* Laser line track */}
+      <div className="relative max-w-4xl mx-auto z-[2]">
         <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-border">
-          <div
-            className="absolute left-0 top-0 w-full laser-line transition-all duration-100"
-            style={{ height: `${scrollProgress * 100}%` }}
-          />
+          <div className="absolute left-0 top-0 w-full laser-line transition-all duration-100" style={{ height: `${scrollProgress * 100}%` }} />
           <div
             className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary transition-all duration-100"
-            style={{
-              top: `${scrollProgress * 100}%`,
-              boxShadow: "0 0 12px hsl(183 100% 50% / 0.8)",
-              opacity: scrollProgress > 0.02 ? 1 : 0,
-            }}
+            style={{ top: `${scrollProgress * 100}%`, boxShadow: "0 0 12px hsl(183 100% 50% / 0.8)", opacity: scrollProgress > 0.02 ? 1 : 0 }}
           />
         </div>
 
-        {/* Module cards */}
-        <div className="space-y-6">
+        <div className="space-y-7">
           {modules.map((mod, i) => {
             const moduleProgress = (i + 1) / modules.length;
             const isActive = scrollProgress >= moduleProgress - 0.05;
