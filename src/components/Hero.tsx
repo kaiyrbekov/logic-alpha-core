@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Progress } from "@/components/ui/progress";
 
 interface HeroProps {
   onOpenForm: (tier?: string) => void;
@@ -7,7 +8,7 @@ interface HeroProps {
 const TARGET_DATE = new Date("2026-03-10T00:00:00");
 
 const useCountdown = () => {
-  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0 });
 
   useEffect(() => {
     const tick = () => {
@@ -17,11 +18,10 @@ const useCountdown = () => {
         d: Math.floor(diff / 86400000),
         h: Math.floor((diff % 86400000) / 3600000),
         m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
       });
     };
     tick();
-    const id = setInterval(tick, 1000);
+    const id = setInterval(tick, 60000);
     return () => clearInterval(id);
   }, []);
 
@@ -31,7 +31,7 @@ const useCountdown = () => {
 const pad = (n: number) => String(n).padStart(2, "0");
 
 const Hero = ({ onOpenForm }: HeroProps) => {
-  const { d, h, m, s } = useCountdown();
+  const { d, h, m } = useCountdown();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6">
@@ -74,28 +74,29 @@ const Hero = ({ onOpenForm }: HeroProps) => {
           <span className="relative z-10">[ ПОДАТЬ ЗАЯВКУ ]</span>
         </button>
 
-        {/* Timer */}
-        <div className="mt-8 font-mono text-[11px] tracking-wider text-muted-foreground/60">
-          <span className="text-muted-foreground/40">STATUS:</span>{" "}
-          <span className="text-primary/70">ENROLLMENT_OPEN</span>{" "}
-          <span className="text-muted-foreground/30">//</span>{" "}
-          <span className="text-muted-foreground/40">START_DATE:</span>{" "}
-          <span className="text-foreground/60">10_MARCH</span>{" "}
-          <span className="text-muted-foreground/30">//</span>{" "}
-          <span className="text-muted-foreground/40">TIME_LEFT:</span>{" "}
-          <span className="cyan-text">
-            <span className="ghost-number" style={{ "--ghost-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>
-            :
-            <span className="ghost-number" style={{ "--ghost-delay": "1.1s" } as React.CSSProperties}>{pad(h)}</span>
-            :
-            <span className="ghost-number" style={{ "--ghost-delay": "2.4s" } as React.CSSProperties}>{pad(m)}</span>
-            :
-            <span className="ghost-number" style={{ "--ghost-delay": "0.7s" } as React.CSSProperties}>{pad(s)}</span>
-          </span>
+        {/* Timer — prominent */}
+        <div className="mt-10">
+          <div className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground/50 mb-3">
+            СТАРТ МАРТОВСКОГО ПОТОКА ЧЕРЕЗ
+          </div>
+          <div className="font-mono text-2xl md:text-4xl font-bold tracking-wider cyan-glow-text flex items-center justify-center gap-1 md:gap-2">
+            <span className="glitch-number" style={{ "--glitch-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>
+            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">ДНЕЙ</span>
+            <span className="text-primary/30 mx-1">:</span>
+            <span className="glitch-number" style={{ "--glitch-delay": "1.1s" } as React.CSSProperties}>{pad(h)}</span>
+            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">ЧАСОВ</span>
+            <span className="text-primary/30 mx-1">:</span>
+            <span className="glitch-number" style={{ "--glitch-delay": "2.4s" } as React.CSSProperties}>{pad(m)}</span>
+            <span className="text-muted-foreground/40 text-lg md:text-2xl font-normal">МИНУТ</span>
+          </div>
+          {/* Subtle pulsing progress bar */}
+          <div className="max-w-xs mx-auto mt-4">
+            <Progress value={100} className="h-[2px] bg-muted/30 pulse-progress" />
+          </div>
         </div>
 
         {/* Bottom stats */}
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
             { num: "13", label: "МОДУЛЕЙ" },
             { num: "AI", label: "BACKTEST" },
@@ -103,8 +104,8 @@ const Hero = ({ onOpenForm }: HeroProps) => {
           ].map((stat, i) => (
             <div key={stat.label} className="text-center">
               <div
-                className="font-mono text-2xl font-bold cyan-text mb-1 ghost-number"
-                style={{ "--ghost-delay": `${i * 1.7 + 0.5}s` } as React.CSSProperties}
+                className="font-mono text-2xl font-bold cyan-text mb-1 glitch-number"
+                style={{ "--glitch-delay": `${i * 1.7 + 0.5}s` } as React.CSSProperties}
               >
                 {stat.num}
               </div>

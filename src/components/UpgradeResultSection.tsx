@@ -1,21 +1,21 @@
 const results = [
   {
-    icon: "⚙",
-    title: "Оцифрованный мозг",
+    tag: "[01]",
+    title: "ОЦИФРОВАННЫЙ МОЗГ",
     description:
-      "Твоя стратегия превращается в жесткий алгоритм, исключающий двоякую трактовку.",
+      "Стратегия конвертируется в детерминированный алгоритм. Исключена двоякая трактовка. Каждый вход — результат протокола, а не субъективной оценки.",
   },
   {
-    icon: "⚡",
-    title: "Оптимизация времени",
+    tag: "[02]",
+    title: "ОПТИМИЗАЦИЯ ВРЕМЕНИ",
     description:
-      "ИИ забирает на себя 90% рутинной работы по сбору данных. Твоя задача — только исполнение.",
+      "ИИ-модуль берет на себя 90% рутинного сбора и обработки данных. Оператору остается только валидация сигнала и исполнение.",
   },
   {
-    icon: "◆",
-    title: "Билет в Pro-лигу",
+    tag: "[03]",
+    title: "БИЛЕТ В PRO-ЛИГУ",
     description:
-      "Навыки работы с ликвидностью на уровне западных хедж-фондов и прямой путь к крупному капиталу.",
+      "Навыки анализа ликвидности на уровне западных институциональных фондов. Прямой маршрут к управлению внешним капиталом от $10K до $200K.",
   },
 ];
 
@@ -39,10 +39,12 @@ const UpgradeResultSection = () => {
       <div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-4">
         {results.map((item) => (
           <div
-            key={item.title}
-            className="glass rounded-sm p-6 text-center transition-all duration-300 hover:border-primary/20"
+            key={item.tag}
+            className="glass rounded-sm p-6 transition-all duration-300 hover:border-primary/20"
           >
-            <div className="font-mono text-2xl mb-4 cyan-text">{item.icon}</div>
+            <div className="font-mono text-xs tracking-wider text-primary/50 mb-4">
+              {item.tag}
+            </div>
             <h3 className="font-mono text-sm font-semibold text-foreground mb-3">
               {item.title}
             </h3>
