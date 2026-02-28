@@ -2,13 +2,14 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
-
 import PricingSection from "@/components/PricingSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
+import { useParallaxGrid } from "@/hooks/useParallaxGrid";
 
 const Index = () => {
   const [formOpen, setFormOpen] = useState(false);
   const [selectedTier, setSelectedTier] = useState<string | undefined>();
+  const gridRef = useParallaxGrid();
 
   const handleOpenForm = (tier?: string) => {
     setSelectedTier(tier);
@@ -16,7 +17,7 @@ const Index = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-background bg-grid film-grain">
+    <div ref={gridRef} className="relative min-h-screen bg-background bg-grid film-grain" style={{ transition: "background-position 0.15s ease-out" }}>
       <Hero onOpenForm={handleOpenForm} />
       <SystemCrashSection />
       <ModuleRoadmap />

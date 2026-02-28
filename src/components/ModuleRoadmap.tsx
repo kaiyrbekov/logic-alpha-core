@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ModuleCard from "./ModuleCard";
-
+import SectionHeader from "./SectionHeader";
 const modules = [
   {
     num: "01",
@@ -93,14 +93,7 @@ const ModuleRoadmap = () => {
 
   return (
     <section className="relative py-32 px-6" ref={containerRef}>
-      {/* Section header */}
-      <div className="max-w-4xl mx-auto mb-20">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="h-px flex-1 bg-border" />
-          <span className="font-mono text-xs tracking-[0.3em] text-muted-foreground">ПРОГРАММА КУРСА</span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
-      </div>
+      <SectionHeader tag="ПРОГРАММА КУРСА" title="13 МОДУЛЕЙ СИСТЕМЫ" />
 
       <div className="relative max-w-3xl mx-auto">
         {/* Laser line track */}
