@@ -73,7 +73,7 @@ const tiers: TierConfig[] = [
     label: "GROUP",
     oldPrice: "$499",
     price: "$299",
-    activeCount: 5,
+    activeCount: 8,
     bonus: "+ 60 дней в комьюнити",
     accent: true,
     limited: false,
