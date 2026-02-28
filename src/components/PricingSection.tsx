@@ -8,19 +8,19 @@ interface PricingSectionProps {
 
 const tiers = [
   {
-    id: "self-study", label: "SELF-STUDY", price: "$299",
-    features: ["Теоретическая база", "Самостоятельная проработка", "Разбор торгового журнала (1 раз)", "Без доступа к ИИ и ДЗ"],
-    accent: false,
+    id: "self-study", label: "SELF-STUDY", oldPrice: "$299", price: "$199",
+    features: ["13 модулей обучения", "Доступ к базе знаний", "Бессрочный доступ к материалам", "Без домашних заданий", "Без доступа к ИИ"],
+    accent: false, limited: false,
   },
   {
-    id: "group", label: "GROUP SESSION", price: "$499",
-    features: ["Все материалы + AI-Backtest", "Morning Calls", "Еженедельные конференции", "Community", "Проверка ДЗ менторами"],
-    accent: true,
+    id: "group", label: "GROUP", oldPrice: "$499", price: "$299",
+    features: ["Все из «Self-Study»", "Закрытый Discord-комьюнити", "Еженедельные разборы рынка", "Поддержка кураторов", "Доступ к ИИ", "Ежедневные домашние задания"],
+    accent: true, limited: false,
   },
   {
-    id: "individual", label: "INDIVIDUAL", price: "$3,500",
-    features: ["Личное сопровождение до результата", "Индивидуальный аудит психологии", "Прямой доступ к ментору 24/7", "Все функции GROUP"],
-    accent: false,
+    id: "individual", label: "EQUITY PRO", oldPrice: "$3,500", price: "$1,990",
+    features: ["Все из «Group»", "Личное менторство", "Stage 05 — Гарантия результата", "Индивидуальные созвоны", "Помощь с получением $50k+ в Prop-фирме"],
+    accent: false, limited: true,
   },
 ];
 
@@ -34,19 +34,27 @@ const PricingCard = ({ tier, index, onOpenForm }: { tier: typeof tiers[0]; index
         ref={tilt.ref}
         onMouseMove={tilt.onMouseMove}
         onMouseLeave={tilt.onMouseLeave}
-        className={`glass rounded-sm p-9 flex flex-col transition-all duration-300 h-full ${tier.accent ? "module-highlighted" : ""}`}
+        className={`glass rounded-sm p-9 flex flex-col transition-all duration-300 h-full relative ${tier.accent ? "module-highlighted" : ""} ${tier.limited ? "ring-1 ring-primary/60 shadow-[0_0_30px_hsl(183_100%_50%/0.15)]" : ""}`}
         style={{ transformStyle: "preserve-3d" }}
       >
+        {tier.limited && (
+          <div className="absolute -top-3 right-6 px-4 py-1 bg-primary/10 border border-primary/50 rounded-sm">
+            <span className="font-mono text-[10px] tracking-[0.2em] cyan-text font-bold pulse-cyan">LIMITED: 5 SPOTS</span>
+          </div>
+        )}
         <div className="mb-7">
           <div className="flex items-center gap-2 mb-5">
-            {tier.accent && <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-cyan" />}
+            {(tier.accent || tier.limited) && <span className="w-1.5 h-1.5 rounded-full bg-primary pulse-cyan" />}
             <span className="font-mono text-sm tracking-[0.2em] text-muted-foreground">{tier.label}</span>
           </div>
-          <div
-            className="font-mono text-4xl font-bold cyan-text glitch-number"
-            style={{ "--glitch-delay": `${index * 1.5 + 0.3}s` } as React.CSSProperties}
-          >
-            {tier.price}
+          <div className="flex items-baseline gap-3">
+            <span className="font-mono text-lg text-muted-foreground/50 line-through decoration-destructive/60">{tier.oldPrice}</span>
+            <div
+              className="font-sans text-4xl md:text-5xl font-bold cyan-text glitch-number"
+              style={{ "--glitch-delay": `${index * 1.5 + 0.3}s` } as React.CSSProperties}
+            >
+              {tier.price}
+            </div>
           </div>
         </div>
         <ul className="space-y-4 flex-1 mb-9">

@@ -13,6 +13,10 @@ const faqs = [
     a: "Вы задаете параметры своей стратегии в виде технического промпта (мы обучаем архитектуре промптов с нуля). Система за минуты проводит глубокий аудит и выдает полную статистику валидности вашей модели на исторических данных.",
   },
   {
+    q: "Какую методологию анализа вы используете?",
+    a: null, // rendered with JSX below
+  },
+  {
     q: "Какие рынки покрывает программа?",
     a: "Методология универсальна. Мы обучаем профессиональной работе с ликвидностью на всех ключевых рынках: Индексы (NAS100, SPX500), Forex и Криптовалюты.",
   },
@@ -42,6 +46,12 @@ const faqs = [
   },
 ];
 
+const SmcAnswer = () => (
+  <span>
+    В основе системы лежит <span className="font-bold cyan-text">Smart Money Concepts</span> (SMC). Мы обучаем понимать истинные причины движения цены через логику доставки ликвидности и действия крупных банков. В сочетании с нашим <span className="font-bold cyan-text">AI-бэктестером</span> это превращает трейдинг из интуитивной игры в четкий инженерный процесс.
+  </span>
+);
+
 const SystemFAQ = () => {
   const { ref, style } = useScrollReveal3D(0);
 
@@ -61,7 +71,7 @@ const SystemFAQ = () => {
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-5">
                   <p className="font-mono text-base leading-relaxed text-muted-foreground pl-10">
-                    {faq.a}
+                    {faq.a === null ? <SmcAnswer /> : faq.a}
                   </p>
                 </AccordionContent>
               </AccordionItem>
