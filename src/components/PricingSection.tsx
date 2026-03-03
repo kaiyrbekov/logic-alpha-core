@@ -61,8 +61,8 @@ const tiers: TierConfig[] = [
   {
     id: "self-study",
     label: "SELF-STUDY",
-    oldPrice: "$299",
-    price: "$199",
+    oldPrice: "$199",
+    price: "$99",
     activeCount: 4,
     bonus: "+ 30 дней в комьюнити",
     accent: false,
@@ -71,8 +71,8 @@ const tiers: TierConfig[] = [
   {
     id: "group",
     label: "GROUP",
-    oldPrice: "$499",
-    price: "$299",
+    oldPrice: "$299",
+    price: "$199",
     activeCount: 8,
     bonus: "+ 60 дней в комьюнити",
     accent: true,
@@ -81,8 +81,8 @@ const tiers: TierConfig[] = [
   {
     id: "elite",
     label: "EQUITY ELITE",
-    oldPrice: "$3,500",
-    price: "$1,990",
+    oldPrice: "$1,990",
+    price: "$1,000",
     activeCount: 8,
     bonus: "LIFETIME ACCESS",
     accent: false,
