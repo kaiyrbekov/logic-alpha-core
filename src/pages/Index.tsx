@@ -44,7 +44,7 @@ const Index = () => {
       <footer className="border-t border-border py-12 px-6">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground">
-            EQUITY<span className="cyan-text mx-1">/</span>TRADING SYSTEM
+            SAINTS<span className="cyan-text mx-1">/</span>TRADING SYSTEM
           </span>
           <span className="font-mono text-[10px] text-muted-foreground/40">
             © 2026 ALL RIGHTS RESERVED
