@@ -30,7 +30,7 @@ const IntakeFormModal = ({ isOpen, onClose, selectedTier }: IntakeFormModalProps
           Telegram: formData.telegram,
           Instagram: formData.instagram,
           Тариф: formData.tier,
-          _subject: `Новая заявка EQUITY — ${formData.tier}`,
+          _subject: `Новая заявка SAINTS — ${formData.tier}`,
         }),
       });
       alert("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
@@ -42,7 +42,7 @@ const IntakeFormModal = ({ isOpen, onClose, selectedTier }: IntakeFormModalProps
     }
   };
 
-  const tiers = ["SELF-STUDY", "GROUP", "EQUITY PRO"];
+  const tiers = ["SELF-STUDY", "GROUP", "SAINTS PRO"];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

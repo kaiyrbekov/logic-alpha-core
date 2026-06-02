@@ -13,15 +13,15 @@ interface PricingSectionProps {
   onOpenForm: (tier: string) => void;
 }
 
-const EQUITY_CORE_DESCRIPTION =
-  "EQUITY CORE — это проприетарный AI-алгоритм валидации. Он анализирует твой торговый сетап по 20+ параметрам ликвидности и математического ожидания, отсеивая эмоциональные входы и оставляя только высоковероятные сделки. Это твой цифровой предохранитель.";
+const SAINTS_CORE_DESCRIPTION =
+  "SAINTS CORE — это проприетарный AI-алгоритм валидации. Он анализирует твой торговый сетап по 20+ параметрам ликвидности и математического ожидания, отсеивая эмоциональные входы и оставляя только высоковероятные сделки. Это твой цифровой предохранитель.";
 
 const standardFeatures = [
   { code: "ACCESS", label: "Безлимитный доступ к 13 модулям системы" },
   { code: "ASSETS", label: "Библиотека торговых сетапов и чек-листов" },
   { code: "DIRECT_FEEDBACK", label: "Прямая связь с менторами в Discord" },
   { code: "SYSTEM_UPDATE", label: "Регулярные обновления контента под текущий рынок" },
-  { code: "CORE_VALIDATION", label: "Доступ к ИИ-модулю EQUITY CORE для проверки стратегий", hasTooltip: true },
+  { code: "CORE_VALIDATION", label: "Доступ к ИИ-модулю SAINTS CORE для проверки стратегий", hasTooltip: true },
   { code: "LIVE_SESSIONS", label: "Участие в еженедельных стримах с разбором графиков" },
   { code: "CHALLENGE_SYNC", label: "Сопровождение при прохождении аттестации в Prop-фирмы" },
   { code: "FINAL_AUDIT", label: "Индивидуальный аудит торгового журнала и допуск к капиталу" },
@@ -80,7 +80,7 @@ const tiers: TierConfig[] = [
   },
   {
     id: "elite",
-    label: "EQUITY ELITE",
+    label: "SAINTS ELITE",
     oldPrice: "$1,990",
     price: "$1,000",
     activeCount: 8,
@@ -138,7 +138,7 @@ const FeatureItem = ({
           side="top"
           className="max-w-xs bg-card border-border text-muted-foreground font-mono text-xs p-4"
         >
-          {EQUITY_CORE_DESCRIPTION}
+          {SAINTS_CORE_DESCRIPTION}
         </TooltipContent>
       </Tooltip>
     );

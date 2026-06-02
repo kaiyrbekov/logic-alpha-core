@@ -48,9 +48,9 @@ const Hero = ({ onOpenForm }: HeroProps) => {
         {/* Main headline */}
         <h1
           className="glitch-hover text-5xl md:text-7xl lg:text-8xl font-sans font-black tracking-tighter leading-[0.9] mb-8"
-          data-text="EQUITY – СИСТЕМНЫЙ ТРЕЙДИНГ"
+          data-text="SAINTS – СИСТЕМНЫЙ ТРЕЙДИНГ"
         >
-          <span className="text-foreground">EQUITY</span>
+          <span className="text-foreground">SAINTS</span>
           <span className="cyan-text mx-3">–</span>
           <br />
           <span className="text-foreground">СИСТЕМНЫЙ</span>
