@@ -1,20 +1,45 @@
+import { useRef, useEffect, useState } from "react";
 import { useScrollReveal3D } from "@/hooks/useScrollReveal3D";
 import { useGlitchFlicker } from "@/hooks/useGlitchFlicker";
-import { useCardTilt } from "@/hooks/useCardTilt";
+
+interface Lesson {
+  code: string;
+  text: string;
+}
 
 interface ModuleCardProps {
   num: string;
   title: string;
-  description: string;
+  goal: string;
+  lessons: Lesson[];
   highlighted?: boolean;
   isActive?: boolean;
   index?: number;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
-const ModuleCard = ({ num, title, description, highlighted, isActive, index = 0 }: ModuleCardProps) => {
+const ModuleCard = ({
+  num,
+  title,
+  goal,
+  lessons,
+  highlighted,
+  isActive,
+  index = 0,
+  isOpen,
+  onToggle,
+}: ModuleCardProps) => {
   const { ref, style } = useScrollReveal3D(index * 60);
   const { display: flickerNum, trigger } = useGlitchFlicker(num);
-  const tilt = useCardTilt();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setMaxHeight(isOpen ? contentRef.current.scrollHeight : 0);
+    }
+  }, [isOpen, lessons.length]);
 
   return (
     <div
@@ -41,49 +66,94 @@ const ModuleCard = ({ num, title, description, highlighted, isActive, index = 0 
       />
 
       <div
-        ref={tilt.ref}
-        onMouseMove={tilt.onMouseMove}
-        onMouseLeave={tilt.onMouseLeave}
-        className={`glass rounded-sm p-7 transition-all duration-300 ${
+        className={`glass rounded-sm transition-all duration-300 ${
           highlighted ? "module-highlighted-strong" : ""
-        }`}
-        style={{ transformStyle: "preserve-3d" }}
+        } ${isOpen ? "border-primary/40" : ""}`}
       >
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div className="flex items-center gap-3">
+        {/* Header — clickable */}
+        <button
+          type="button"
+          onClick={onToggle}
+          className="w-full text-left p-5 md:p-6 flex items-start justify-between gap-4 group"
+          aria-expanded={isOpen}
+        >
+          <div className="flex items-center gap-3 min-w-0 flex-1">
             <span
-              className="font-mono text-sm cyan-text tracking-wider cursor-default select-none font-semibold"
+              className="font-mono text-sm cyan-text tracking-wider cursor-default select-none font-semibold shrink-0"
               onMouseEnter={trigger}
             >
               {flickerNum}
             </span>
-            <span className="font-mono text-sm text-muted-foreground">/</span>
-            <h3 className="font-sans text-base md:text-lg font-semibold text-foreground">{title}</h3>
+            <span className="font-mono text-sm text-muted-foreground shrink-0">/</span>
+            <h3 className="font-sans text-base md:text-lg font-semibold text-foreground truncate">
+              {title}
+            </h3>
           </div>
 
-          {highlighted && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-sm border border-primary/30 bg-primary/5 pulse-cyan-strong shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-              <span className="font-mono text-[11px] tracking-wider cyan-text font-medium">VERIFIED BY AI</span>
+          <div className="flex items-center gap-3 shrink-0">
+            {highlighted && (
+              <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-sm border border-primary/30 bg-primary/5 pulse-cyan-strong">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="font-mono text-[10px] tracking-wider cyan-text font-medium">
+                  VERIFIED BY AI
+                </span>
+              </div>
+            )}
+            {/* Toggle indicator */}
+            <span
+              className={`font-mono text-xs cyan-text border border-primary/40 rounded-sm w-7 h-7 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/10 ${
+                isOpen ? "rotate-45 bg-primary/10" : ""
+              }`}
+              aria-hidden="true"
+            >
+              +
+            </span>
+          </div>
+        </button>
+
+        {/* Collapsible body */}
+        <div
+          style={{ maxHeight: `${maxHeight}px` }}
+          className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+        >
+          <div ref={contentRef} className="px-5 md:px-6 pb-6">
+            <div className="pt-1 pb-4 border-t border-border/60">
+              <p className="font-body text-sm leading-relaxed text-muted-foreground mt-4 mb-5">
+                <span className="font-mono text-[10px] tracking-[0.2em] text-primary/70 mr-2 uppercase">
+                  Цель —
+                </span>
+                {goal}
+              </p>
+
+              <ul className="space-y-2.5">
+                {lessons.map((lesson) => (
+                  <li
+                    key={lesson.code}
+                    className="flex gap-3 items-baseline group/lesson"
+                  >
+                    <span className="font-mono text-[11px] cyan-text/80 tracking-wider shrink-0 w-10 transition-colors group-hover/lesson:text-primary">
+                      {lesson.code}
+                    </span>
+                    <span className="font-body text-sm leading-relaxed text-foreground/85">
+                      {lesson.text}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {highlighted && (
+                <div className="mt-5 pt-4 border-t border-primary/10">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-px bg-primary/40" />
+                    <span className="font-mono text-[11px] tracking-wider text-primary/60">
+                      AI-POWERED MODULE
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
-
-        {/* Description */}
-        <p className="font-body text-base leading-relaxed text-muted-foreground">{description}</p>
-
-        {/* Bottom border accent for highlighted */}
-        {highlighted && (
-          <div className="mt-5 pt-4 border-t border-primary/10">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-px bg-primary/40" />
-              <span className="font-mono text-[11px] tracking-wider text-primary/60">
-                AI-POWERED MODULE
-              </span>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
