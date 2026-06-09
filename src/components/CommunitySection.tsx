@@ -93,7 +93,7 @@ const CommunitySection = () => {
               className="font-sans text-4xl md:text-5xl font-bold text-foreground glitch-number"
               style={{ "--glitch-delay": "1.2s" } as React.CSSProperties}
             >
-              $39<span className="text-lg text-muted-foreground font-normal ml-1">/ МЕСЯЦ</span>
+              $29<span className="text-lg text-muted-foreground font-normal ml-1">/мес</span>
             </div>
           </div>
 
