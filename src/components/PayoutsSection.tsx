@@ -41,10 +41,10 @@ const payouts: Payout[] = [
   },
   {
     code: "PAYOUT_04",
-    name: "Alikhan Omarov",
-    amount: "$23 450.00",
+    name: "Ahmetov Sayan",
+    amount: "$8 293.00",
     firm: "The 5%ers",
-    date: "2026",
+    date: "07.05.2026",
     image: payout4.url,
   },
 ];
