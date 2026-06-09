@@ -41,6 +41,8 @@ const Index = () => {
 
       <PricingSection onOpenForm={handleOpenForm} />
 
+      <PayoutsSection />
+
       <SystemFAQ />
       
 
