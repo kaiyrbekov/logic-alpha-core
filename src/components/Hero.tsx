@@ -78,7 +78,7 @@ const Hero = ({ onOpenForm }: HeroProps) => {
         {/* Timer */}
         <div className="mt-12">
           <div className="font-sans text-base md:text-lg tracking-[0.15em] font-extrabold text-foreground mb-4">
-            СТАРТ МАРТОВСКОГО ПОТОКА <span className="cyan-text">ЧЕРЕЗ</span>
+            СТАРТ ИЮНЬСКОГО ПОТОКА <span className="cyan-text">ЧЕРЕЗ</span>
           </div>
           <div className="font-mono text-3xl md:text-5xl font-bold tracking-wider cyan-glow-text flex items-center justify-center gap-1 md:gap-2">
             <span className="glitch-number" style={{ "--glitch-delay": "0.3s" } as React.CSSProperties}>{pad(d)}</span>

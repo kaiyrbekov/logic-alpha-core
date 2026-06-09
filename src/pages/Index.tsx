@@ -6,6 +6,7 @@ import ModuleRoadmap from "@/components/ModuleRoadmap";
 import PhaseIntegration from "@/components/PhaseIntegration";
 import CommunitySection from "@/components/CommunitySection";
 import PricingSection from "@/components/PricingSection";
+import PayoutsSection from "@/components/PayoutsSection";
 import IntakeFormModal from "@/components/IntakeFormModal";
 import ImmersiveBackground from "@/components/ImmersiveBackground";
 
@@ -39,6 +40,8 @@ const Index = () => {
       <CommunitySection />
 
       <PricingSection onOpenForm={handleOpenForm} />
+
+      <PayoutsSection />
 
       <SystemFAQ />
       
