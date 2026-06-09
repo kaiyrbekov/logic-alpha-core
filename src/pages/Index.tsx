@@ -27,6 +27,8 @@ const Index = () => {
       <ImmersiveBackground />
       <Hero onOpenForm={handleOpenForm} />
 
+      <AiStatsSection />
+
       <SystemCrashSection />
 
       <SkillsLog />
