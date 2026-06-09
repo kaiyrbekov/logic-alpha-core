@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import AiStatsSection from "@/components/AiStatsSection";
 import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
 import PhaseIntegration from "@/components/PhaseIntegration";
