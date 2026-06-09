@@ -2,49 +2,100 @@ import { useEffect, useRef, useState } from "react";
 import ModuleCard from "./ModuleCard";
 import SectionHeader from "./SectionHeader";
 
-const modules = [
+type Module = {
+  num: string;
+  title: string;
+  goal: string;
+  lessons: { code: string; text: string }[];
+  highlighted?: boolean;
+};
+
+const modules: Module[] = [
   {
     num: "01",
-    title: "Фундамент рынка и механика (База)",
-    description:
-      "Устройство рынка, кто двигает цену и где совершаются сделки. Механика Buy/Sell, стакан, аск/бид, участники, японские свечи, таймфреймы, ордера (Market/Limit/Stop, SL/TP), брокеры, спреды, TradingView и MT4/MT5. Выбор рынка (Forex, Indices, Gold, Crypto) и стиля торговли с приоритетом intraday.",
+    title: "Фундамент рынка и механика",
+    goal: "Понимание, как устроен рынок, кто двигает цену и где совершаются сделки.",
+    lessons: [
+      { code: "1.1", text: "Что такое трейдинг. Механика рынка: сведение ордеров Buy/Sell, стакан, аск/бид." },
+      { code: "1.2", text: "Участники рынка: розничные трейдеры, маркет-мейкеры, алгоритмы, ЦБ. Кто формирует тренд." },
+      { code: "1.3", text: "Анатомия японской свечи. Как формируется бар (OHLC)." },
+      { code: "1.4", text: "Таймфреймы. Концепция мультитаймфреймового анализа (от месяца до 1 минуты)." },
+      { code: "1.5", text: "Ордера и управление позицией: Market, Limit, Stop. Stop Loss и Take Profit на практике." },
+      { code: "1.6", text: "Инфраструктура: брокеры, спреды, комиссии, свопы. TradingView и MT4/MT5." },
+      { code: "1.7", text: "Выбор рынка и стиля: Forex, Indices, Gold, Crypto. Скальпинг / Интрадей / Свинг. Приоритет интрадей." },
+    ],
   },
   {
     num: "02",
-    title: "Механика доставки цены (Smart Money & ICT)",
-    description:
-      "Чтение графика без индикаторов. Рыночная структура (Strong/Weak High/Low, BOS, CHoCH), фрактальность, Dealing Range (Premium/Discount), ликвидность (BSL/SSL, TL, EQH/EQL, PDH/PDL), FVG/IMB, POI: Order Block, Breaker, Mitigation, Volume Confirmation и Order Flow институционального капитала.",
+    title: "Механика доставки цены (SMC & ICT)",
+    goal: "Читать график без индикаторов и понимать движение цены от ликвидности к ликвидности.",
+    lessons: [
+      { code: "2.1", text: "Рыночная структура. Strong/Weak High/Low. CHoCH и BOS." },
+      { code: "2.2", text: "Фрактальность рынка. Связь младших и старших ТФ." },
+      { code: "2.3", text: "Dealing Range: Premium и Discount. Сетка Фибоначчи для зон покупок и продаж." },
+      { code: "2.4", text: "Ликвидность — топливо рынка: BSL/SSL, TL, EQH/EQL, PDH/PDL, PWH/PWL." },
+      { code: "2.5", text: "Зоны неэффективности: Fair Value Gap / Imbalance." },
+      { code: "2.6", text: "Зоны интереса (POI): Order Block, Breaker Block, Mitigation Block." },
+      { code: "2.7", text: "Volume Imbalance / Volume Confirmation. Перекрытие пустот объема." },
+      { code: "2.8", text: "Order Flow. Как институциональный капитал доставляет цену в POI." },
+      { code: "2.9", text: "Inducement. Как маркет-мейкер заманивает ранних трейдеров до истинного разворота." },
+    ],
   },
   {
     num: "03",
-    title: "Контекст, Время и Продвинутые сетапы",
-    description:
-      "Time & Price: сессии Asia / London / New York и Killzones. Алгоритм AMD (Accumulation — Manipulation — Distribution), профили дня, Judas Swing, снятие пулов ликвидности сессий, SMT-дивергенция (NAS100/SPX500, EURUSD/DXY) и пошаговый чек-лист контекста от Daily к 15m.",
+    title: "Контекст, время и продвинутые сетапы",
+    goal: "Соединить механику с фактором времени и определять приоритетное направление дня.",
+    lessons: [
+      { code: "3.1", text: "Интрадей-сессии: Азия, Лондон, Нью-Йорк. Killzones и их специфика." },
+      { code: "3.2", text: "Алгоритм AMD: Accumulation — Manipulation — Distribution." },
+      { code: "3.3", text: "Профили дня: трендовый, разворотный, консолидация. Шаблоны движения." },
+      { code: "3.4", text: "Ловушки времени: Judas Swing, снятие пулов ликвидности сессий." },
+      { code: "3.5", text: "SMT-дивергенция: NAS100/SPX500, EURUSD/DXY — поиск истинных разворотов." },
+      { code: "3.6", text: "HTF Direction. Чек-лист от Daily к 15m: куда стремится цена." },
+    ],
   },
   {
     num: "04",
     title: "Синхронизация ТФ и Модели входа",
-    description:
-      "Ювелирный вход с минимальным стопом. Концепция моделей входа, три рабочих модели исполнения, анатомия идеальной позиции: правильное распределение риска, частичная фиксация прибыли (Partial TP) и перевод в безубыток (BE).",
+    goal: "Идеальная позиция и ювелирный вход с минимальным стопом.",
     highlighted: true,
+    lessons: [
+      { code: "4.1", text: "Модели входа: что это и зачем они нужны." },
+      { code: "4.2", text: "Модель входа №1." },
+      { code: "4.3", text: "Модель входа №2." },
+      { code: "4.4", text: "Модель входа №3." },
+      { code: "4.5", text: "Анатомия идеальной позиции: распределение риска, Partial TP, перевод в безубыток (BE)." },
+    ],
   },
   {
     num: "05",
-    title: "Риск-менеджмент, Бэктесты и Психология",
-    description:
-      "Математика трейдинга и фиксированный риск 1% на сделку, соотношение R:R, статический vs динамический подход, методология бэктестов на симуляторах с выборкой 100+ сделок, ведение Trading Journal (Winrate, Avg R:R, HTF/LTF скриншоты, состояние) и работа с FOMO, овертрейдингом, тильтом и просадкой.",
+    title: "Риск-менеджмент, бэктесты и психология",
+    goal: "Превратить знания в системный бизнес и собрать математическое ожидание.",
+    lessons: [
+      { code: "5.1", text: "Риск-менеджмент как основа выживания. Фиксированный риск 1%, соотношение R:R." },
+      { code: "5.2", text: "Статический vs Динамический подход. Жесткие правила против адаптации." },
+      { code: "5.3", text: "Методология бэктестов. Симуляторы рынка, выборка 100+ сделок." },
+      { code: "5.4", text: "Trading Journal: Winrate, Avg R:R, скриншоты HTF/LTF, психологическое состояние." },
+      { code: "5.5", text: "Психология и ошибки: FOMO, овертрейдинг, тильт. Алгоритм выхода из просадки." },
+    ],
   },
   {
     num: "06",
     title: "Проп-трейдинг: от отбора до выплат",
-    description:
-      "Реальный капитал и удержание финансирования. Бизнес-модель проп-фирм, честный разбор правил (Daily Drawdown, Overall Drawdown, Profit Target), выбор фирмы (Funding Pips и др.), стратегия прохождения Evaluation Stages и жизнь после Funded-аккаунта со «Безопасным первым дропом».",
+    goal: "Выйти на реальный капитал и удерживать финансирование.",
+    lessons: [
+      { code: "6.1", text: "Индустрия проп-фирм. Daily Drawdown, Overall Drawdown, Profit Target." },
+      { code: "6.2", text: "Выбор проп-фирмы (Funding Pips и др.): комиссии, проскальзывания, выплаты." },
+      { code: "6.3", text: "Стратегия прохождения Evaluation Stages без психологического давления." },
+      { code: "6.4", text: "Жизнь после Funded-аккаунта. Стратегия «Безопасный первый дроп»." },
+    ],
   },
 ];
 
 const ModuleRoadmap = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [block09Active, setBlock09Active] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const block09Ref = useRef<HTMLDivElement>(null);
 
@@ -87,7 +138,7 @@ const ModuleRoadmap = () => {
           />
         </div>
 
-        <div className="space-y-7">
+        <div className="space-y-4">
           {modules.map((mod, i) => {
             const moduleProgress = (i + 1) / modules.length;
             const isActive = scrollProgress >= moduleProgress - 0.05;
@@ -97,10 +148,13 @@ const ModuleRoadmap = () => {
                 <ModuleCard
                   num={mod.num}
                   title={mod.title}
-                  description={mod.description}
+                  goal={mod.goal}
+                  lessons={mod.lessons}
                   highlighted={mod.highlighted}
                   isActive={isActive}
                   index={i}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
                 />
               </div>
             );
