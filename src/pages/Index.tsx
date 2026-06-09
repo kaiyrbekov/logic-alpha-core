@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
+import AiStatsSection from "@/components/AiStatsSection";
 import SystemCrashSection from "@/components/SystemCrashSection";
 import ModuleRoadmap from "@/components/ModuleRoadmap";
 import PhaseIntegration from "@/components/PhaseIntegration";
@@ -25,6 +26,8 @@ const Index = () => {
     <div className="relative min-h-screen bg-background film-grain">
       <ImmersiveBackground />
       <Hero onOpenForm={handleOpenForm} />
+
+      <AiStatsSection />
 
       <SystemCrashSection />
 
