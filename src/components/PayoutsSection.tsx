@@ -65,9 +65,6 @@ const PayoutCard = ({ payout, index }: { payout: Payout; index: number }) => {
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
-        <div className="absolute top-3 left-3 font-mono text-[10px] tracking-wider text-primary bg-background/70 backdrop-blur px-2 py-1 rounded-sm">
-          [{payout.code}]
-        </div>
       </div>
       <div className="p-5">
         <div className="flex items-center justify-between mb-2">
@@ -109,6 +106,10 @@ const PayoutsSection = () => {
           <PayoutCard key={p.code} payout={p} index={i} />
         ))}
       </div>
+
+      <p className="text-center text-muted-foreground font-body text-base md:text-lg mt-16 max-w-2xl mx-auto">
+        Это только часть того, чего добились наши ученики.
+      </p>
     </section>
   );
 };
